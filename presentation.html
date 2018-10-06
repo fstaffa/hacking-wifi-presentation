@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Hackování Wi-Fi</title>
+<meta name="author" content="(Filip Štaffa)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Hackování Wi-Fi</h1><h2 class="author">Filip Štaffa</h2><h2 class="email"><a href="mailto:fstaffa@cimpress.com">fstaffa@cimpress.com</a></h2>
+</section>
+
+<section>
+<section id="slide-org911aca7">
+<h2 id="org911aca7">Jak funguje Wi-Fi</h2>
+<ul>
+<li>Standard IEEE 802.11</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org9b0e548">
+<h2 id="org9b0e548"><img src="./images/osi2.jpg" alt="osi2.jpg" /></h2>
+</section>
+</section>
+<section>
+<section id="slide-orgd0f0c67">
+<h2 id="orgd0f0c67">Problémy</h2>
+<ul>
+<li>Každý může odposlouchávat</li>
+<li>Management frame lze spoofovat</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orge7ef587">
+<h2 id="orge7ef587">Deauthentiction attack</h2>
+</section>
+</section>
+<section>
+<section id="slide-org22b77d8">
+<h2 id="org22b77d8">Co je vidět</h2>
+<ul>
+<li>Všechny access pointy včetně MAC adres a připojených klientů</li>
+<li>Klienti kteří nejsou připojení</li>
+
+</ul>
+</section>
+<section id="slide-orgd20550b">
+<h3 id="orgd20550b"><img src="./images/active-passive.png" alt="active-passive.png" /></h3>
+</section>
+<section id="slide-orgf6c74df">
+<h3 id="orgf6c74df"><img src="./images/directed-null-probe.jpg" alt="directed-null-probe.jpg" /></h3>
+<aside class="notes">
+<p>
+Power level
+ Zákonem nastavené
+ <a href="https://w.wol.ph/2015/08/28/maximum-wifi-transmission-power-country/">https://w.wol.ph/2015/08/28/maximum-wifi-transmission-power-country/</a>
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org11efdb0">
+<h2 id="org11efdb0">Proč hackovat</h2>
+<ul>
+<li>Internet zadarmo</li>
+<li>Přístup do intranetu</li>
+<li>Odposlouchávání komunikace</li>
+<li>Man In The Middle</li>
+<li>Evil Twin</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgbba81a8">
+<h2 id="orgbba81a8">Nástroje</h2>
+<ul>
+<li>WiFi karta schopná monitor módu</li>
+<li>Linux (Kali)</li>
+
+</ul>
+</section>
+<section id="slide-orgd5c4d56">
+<h3 id="orgd5c4d56"><img src="./images/wifite2.png" alt="wifite2.png" /></h3>
+</section>
+</section>
+<section>
+<section id="slide-org083cf6d">
+<h2 id="org083cf6d">Skrytá Wi-Fi</h2>
+<ul>
+<li>Lze snadno získat</li>
+<li>Narušuje soukromí</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orge12c50b">
+<h2 id="orge12c50b">Filtrování MAC adres</h2>
+<ul>
+<li>Nepraktické když se někdo potřebuje připojit</li>
+<li>MAC adresy jsou veřejné</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell">macchanger -m <span style="color: #6c71c4;">00:d0:70:00:20:69</span> eth0
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb080ee0">
+<h2 id="orgb080ee0">WEP</h2>
+<ul>
+<li>Stačí zachytit dostatek komunikace</li>
+<li>Prolomení trvá cca 10 minut bez ohledu na heslo</li>
+<li>Komunikaci lze vygenerovat i bez klienta</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org769f64e">
+<h2 id="org769f64e">WPA-PSK/WPA2-PSK</h2>
+<ul>
+<li>Sdílený klíč pro všechny klienty</li>
+<li>Nelze MITM attack bez hesla</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org6426801">
+<h2 id="org6426801">Four way handshake</h2>
+<ul>
+<li>PMK je hash jména sítě a hesla</li>
+
+</ul>
+<p>
+<a href="https://medium.com/@billbuchanan_27654/the-beginning-of-the-end-of-wpa-2-cracking-wpa-2-just-got-a-whole-lot-easier-55d7775a7a5a">https://medium.com/@billbuchanan_27654/the-beginning-of-the-end-of-wpa-2-cracking-wpa-2-just-got-a-whole-lot-easier-55d7775a7a5a</a>
+PMK explained <a href="https://www.ins1gn1a.com/understanding-wpa-psk-cracking/">https://www.ins1gn1a.com/understanding-wpa-psk-cracking/</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org2df0e8d">
+<h2 id="org2df0e8d">WPS</h2>
+<ul>
+<li>WiFi Protected Setup</li>
+<li>Má zjednodušit připojení zařízení</li>
+
+</ul>
+</section>
+<section id="slide-org23b8636">
+<h3 id="org23b8636"></h3>
+<ul>
+<li>8 číslic</li>
+<li>Online útok</li>
+<li>100 000 000 možností</li>
+<li>Při 10 pokusech za sekundu v průměru 2 měsíce</li>
+
+</ul>
+</section>
+<section id="slide-orgc950811">
+<h3 id="orgc950811"></h3>
+<ul>
+<li>1 check digit</li>
+<li>10 000 000 možností</li>
+<li>Při 10 pokusech za sekundu v průměru 6 dnů</li>
+
+</ul>
+</section>
+<section id="slide-orgff2ce9f">
+<h3 id="orgff2ce9f"></h3>
+<ul>
+<li>Lze hádat první 4 číslice a další 3 zvlášt</li>
+<li>11 000 možností</li>
+<li>Při 1 pokusu za 5 sekund v průměru 8 hodin</li>
+
+</ul>
+</section>
+<section id="slide-orgbd42d9a">
+<h3 id="orgbd42d9a">Pixie Dust</h3>
+</section>
+</section>
+<section>
+<section id="slide-org2c035f1">
+<h2 id="org2c035f1">KRACK</h2>
+<ul>
+<li>Možnost vnutit klientovi i vysílači vlastní šifrovací klíč</li>
+<li>Lze odposlouchávat komunikaci, ale ne ji měnit</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5c4103c">
+<h2 id="org5c4103c">new hack</h2>
+<ul>
+<li>Nepotřebuje uživatele</li>
+<li>Zneužívá roaming</li>
+<li><a href="https://hashcat.net/forum/thread-7717.html">https://hashcat.net/forum/thread-7717.html</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org426ca1f">
+<h2 id="org426ca1f">WPA 2 Enterprise</h2>
+<ul>
+<li>RADIUS server</li>
+<li>Při správné implementaci téměř neprolomitelné</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org61c25c8">
+<h2 id="org61c25c8">WPA 2 Enterprise</h2>
+<ul>
+<li>Server neprokazuje klíentovi znalost hesla</li>
+<li>Bez důvěryhodných certifikátů lze snadno napadnout MITM</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org3323825">
+<h2 id="org3323825">WPA 3</h2>
+<ul>
+<li>Forward Secrecy</li>
+<li>Password protection on open networks</li>
+<li></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org0a3324e">
+<h2 id="org0a3324e">Privacy</h2>
+<p>
+<a href="https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython">https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython</a> 
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org54a4892">
+<h2 id="org54a4892">Shrnutí</h2>
+<ul>
+<li>WEP není bezpečný</li>
+<li>WPA 2/AES bez WPS s KRACK patchem a silným heslem je bezpečné</li>
+<li></li>
+
+<li>WPA 2 enterprise</li>
+<li>Skrytá síť i filtrování MAC adres moc nepomáhá</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

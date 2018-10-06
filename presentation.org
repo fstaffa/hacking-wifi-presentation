@@ -1,0 +1,100 @@
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+Title: Hackování Wi-Fi
+#+Author: Filip Štaffa
+#+Email: fstaffa@cimpress.com
+#+OPTIONS: email:true timestamp:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+
+* Jak funguje Wi-Fi
+- Standard IEEE 802.11
+* [[./images/osi2.jpg]]
+** Problémy
+ - Každý může odposlouchávat
+ - Management frame lze spoofovat
+** Deauthentiction attack
+** Co je vidět
+ - Všechny access pointy včetně MAC adres a připojených klientů
+ - Klienti kteří nejsou připojení
+** [[./images/active-passive.png]]
+** [[./images/directed-null-probe.jpg]]
+
+#+BEGIN_NOTES
+Power level
+ Zákonem nastavené
+ https://w.wol.ph/2015/08/28/maximum-wifi-transmission-power-country/
+#+END_NOTES
+* Proč hackovat
+- Internet zadarmo
+- Přístup do intranetu
+- Odposlouchávání komunikace
+- Man In The Middle
+- Evil Twin
+* Nástroje
+- WiFi karta schopná monitor módu
+- Linux (Kali)
+** [[./images/wifite2.png]]
+* Skrytá Wi-Fi
+- Lze snadno získat
+- Narušuje soukromí
+* Filtrování MAC adres
+- Nepraktické když se někdo potřebuje připojit
+- MAC adresy jsou veřejné
+** 
+#+BEGIN_SRC shell
+macchanger -m 00:d0:70:00:20:69 eth0
+#+END_SRC
+* WEP
+- Stačí zachytit dostatek komunikace
+- Prolomení trvá cca 10 minut bez ohledu na heslo
+- Komunikaci lze vygenerovat i bez klienta
+* WPA-PSK/WPA2-PSK
+- Sdílený klíč pro všechny klienty
+- Nelze MITM attack bez hesla
+* Four way handshake
+- PMK je hash jména sítě a hesla
+https://medium.com/@billbuchanan_27654/the-beginning-of-the-end-of-wpa-2-cracking-wpa-2-just-got-a-whole-lot-easier-55d7775a7a5a
+PMK explained https://www.ins1gn1a.com/understanding-wpa-psk-cracking/
+
+* WPS
+- WiFi Protected Setup
+- Má zjednodušit připojení zařízení
+** 
+ - 8 číslic
+ - Online útok
+ - 100 000 000 možností
+ - Při 10 pokusech za sekundu v průměru 2 měsíce
+** 
+ - 1 check digit
+ - 10 000 000 možností
+ - Při 10 pokusech za sekundu v průměru 6 dnů
+** 
+ - Lze hádat první 4 číslice a další 3 zvlášt
+ - 11 000 možností
+ - Při 1 pokusu za 5 sekund v průměru 8 hodin
+** Pixie Dust
+* KRACK
+- Možnost vnutit klientovi i vysílači vlastní šifrovací klíč
+- Lze odposlouchávat komunikaci, ale ne ji měnit
+* new hack
+- Nepotřebuje uživatele
+- Zneužívá roaming
+- https://hashcat.net/forum/thread-7717.html
+* WPA 2 Enterprise
+- RADIUS server
+- Při správné implementaci téměř neprolomitelné
+* WPA 2 Enterprise
+- Server neprokazuje klíentovi znalost hesla
+- Bez důvěryhodných certifikátů lze snadno napadnout MITM
+* WPA 3
+- Forward Secrecy
+- Password protection on open networks
+- 
+* Privacy
+https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython 
+* Shrnutí
+- WEP není bezpečný
+- WPA 2/AES bez WPS s KRACK patchem a silným heslem je bezpečné
+- 
+- WPA 2 enterprise
+- Skrytá síť i filtrování MAC adres moc nepomáhá
