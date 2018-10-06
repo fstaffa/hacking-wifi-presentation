@@ -26,48 +26,52 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Hackování Wi-Fi</h1><h2 class="author">Filip Štaffa</h2><h2 class="email"><a href="mailto:fstaffa@cimpress.com">fstaffa@cimpress.com</a></h2>
+<section id="sec-title-slide"><h1 class="title">Hackování Wi-Fi</h1><h2 class="author">Filip Štaffa</h2><h2 class="email"><a href="mailto:filip.staffa@gmail.com">filip.staffa@gmail.com</a></h2>
 </section>
 
 <section>
-<section id="slide-org440db22">
-<h2 id="org440db22">Jak funguje Wi-Fi</h2>
+<section id="slide-orgc37a5ab">
+<h2 id="orgc37a5ab">Wi-Fi</h2>
 <ul>
+<li>Bezdrátová komunikace</li>
+<li>Bezlicenční pásmo</li>
 <li>Standard IEEE 802.11</li>
 
 </ul>
 </section>
+<section id="slide-orgad232b0">
+<h3 id="orgad232b0"><img src="./images/osi2.jpg" alt="osi2.jpg" /></h3>
 </section>
-<section>
-<section id="slide-org95f4a54">
-<h2 id="org95f4a54"><img src="./images/osi2.jpg" alt="osi2.jpg" /></h2>
-<div class="outline-text-2" id="text-org95f4a54">
-</div>
-</section>
-<section id="slide-org181d776">
-<h3 id="org181d776">Problémy</h3>
+<section id="slide-orge88a7dd">
+<h3 id="orge88a7dd">Problémy</h3>
 <ul>
 <li>Každý může odposlouchávat</li>
 <li>Management frame lze spoofovat</li>
 
 </ul>
 </section>
-<section id="slide-org1bf3b71">
-<h3 id="org1bf3b71">Deauthentiction attack</h3>
+<section id="slide-org6b42d15">
+<h3 id="org6b42d15">Deauthentiction attack</h3>
 </section>
-<section id="slide-org6892ab3">
-<h3 id="org6892ab3">Co je vidět</h3>
+<section id="slide-orge2aa539">
+<h3 id="orge2aa539">Co je vidět</h3>
 <ul>
 <li>Všechny access pointy včetně MAC adres a připojených klientů</li>
-<li>Klienti kteří nejsou připojení</li>
+<li>Klienti kteří maji zapnutou WiFi</li>
 
 </ul>
 </section>
-<section id="slide-org1c04ea7">
-<h3 id="org1c04ea7"><img src="./images/active-passive.png" alt="active-passive.png" /></h3>
+<section id="slide-org529940e">
+<h3 id="org529940e"><img src="./images/active-passive.png" alt="active-passive.png" /></h3>
 </section>
-<section id="slide-orgb83a891">
-<h3 id="orgb83a891"><img src="./images/directed-null-probe.jpg" alt="directed-null-probe.jpg" /></h3>
+<section id="slide-org2c310ab">
+<h3 id="org2c310ab">Probe requesty</h3>
+<ul>
+<li>Lze sledovat klienty pomocí MAC adresy</li>
+<li><p>
+MAC address randomization
+</p>
+
 <aside class="notes">
 <p>
 Power level
@@ -75,56 +79,60 @@ Power level
  <a href="https://w.wol.ph/2015/08/28/maximum-wifi-transmission-power-country/">https://w.wol.ph/2015/08/28/maximum-wifi-transmission-power-country/</a>
 </p>
 
-</aside>
-</section>
-</section>
-<section>
-<section id="slide-org0a5bf1a">
-<h2 id="org0a5bf1a">Proč hackovat</h2>
-<ul>
-<li>Internet zadarmo</li>
-<li>Přístup do intranetu</li>
-<li>Odposlouchávání komunikace</li>
-<li>Man In The Middle</li>
-<li>Evil Twin</li>
+</aside></li>
 
 </ul>
 </section>
 </section>
 <section>
-<section id="slide-org9dee4a9">
-<h2 id="org9dee4a9">Nástroje</h2>
+<section id="slide-org56a528d">
+<h2 id="org56a528d">Proč hackovat</h2>
+<ul>
+<li>Internet zadarmo</li>
+<li>Přístup do intranetu</li>
+<li>Odposlouchávání komunikace</li>
+<li>Man In The Middle</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org0f61447">
+<h2 id="org0f61447">Nástroje</h2>
 <ul>
 <li>WiFi karta schopná monitor módu</li>
 <li>Linux (Kali)</li>
 
 </ul>
 </section>
-<section id="slide-org33e9de4">
-<h3 id="org33e9de4"><img src="./images/wifite2.png" alt="wifite2.png" /></h3>
+<section id="slide-org3bb2406">
+<h3 id="org3bb2406"><img src="./images/wifite2.png" alt="wifite2.png" /></h3>
 </section>
 </section>
 <section>
-<section id="slide-org96200d4">
-<h2 id="org96200d4">Skrytá Wi-Fi</h2>
+<section id="slide-org3fefb9e">
+<h2 id="org3fefb9e">Skrytá Wi-Fi</h2>
 <ul>
-<li>Lze snadno získat</li>
+<li>SSID lze snadno zjistit</li>
 <li>Narušuje soukromí</li>
 
 </ul>
 </section>
+<section id="slide-orgbb376b7">
+<h3 id="orgbb376b7"><img src="./images/directed-null-probe.jpg" alt="directed-null-probe.jpg" /></h3>
+</section>
 </section>
 <section>
-<section id="slide-org63ea1cf">
-<h2 id="org63ea1cf">Filtrování MAC adres</h2>
+<section id="slide-orge14852d">
+<h2 id="orge14852d">Filtrování MAC adres</h2>
 <ul>
 <li>Nepraktické když se někdo potřebuje připojit</li>
 <li>MAC adresy jsou veřejné</li>
 
 </ul>
 </section>
-<section id="slide-org20c90dc">
-<h3 id="org20c90dc"></h3>
+<section id="slide-orgca44f18">
+<h3 id="orgca44f18"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-shell">macchanger -m <span style="color: #6c71c4;">00:d0:70:00:20:69</span> eth0
@@ -133,9 +141,10 @@ Power level
 </section>
 </section>
 <section>
-<section id="slide-org3d3cb52">
-<h2 id="org3d3cb52">WEP</h2>
+<section id="slide-org8bdaf1d">
+<h2 id="org8bdaf1d">WEP</h2>
 <ul>
+<li>Od roku 1997</li>
 <li>Stačí zachytit dostatek komunikace</li>
 <li>Prolomení trvá cca 10 minut bez ohledu na heslo</li>
 <li>Komunikaci lze vygenerovat i bez klienta</li>
@@ -144,18 +153,17 @@ Power level
 </section>
 </section>
 <section>
-<section id="slide-org528260b">
-<h2 id="org528260b">WPA-PSK/WPA2-PSK</h2>
+<section id="slide-orge5a4c2b">
+<h2 id="orge5a4c2b">WPA-PSK/WPA2-PSK</h2>
 <ul>
+<li>Od roku 2004</li>
+<li>TKIP a AES verze</li>
 <li>Sdílený klíč pro všechny klienty</li>
 <li>Nelze MITM attack bez hesla</li>
+<li>S heslem lze číst veškerou komunikaci v síti</li>
 
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org1986ac1">
-<h2 id="org1986ac1">Four way handshake</h2>
+<aside class="notes">
 <ul>
 <li>PMK je hash jména sítě a hesla</li>
 
@@ -165,19 +173,20 @@ Power level
 PMK explained <a href="https://www.ins1gn1a.com/understanding-wpa-psk-cracking/">https://www.ins1gn1a.com/understanding-wpa-psk-cracking/</a>
 </p>
 
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-org85f0560">
-<h2 id="org85f0560">WPS</h2>
+<section id="slide-org1d8b964">
+<h2 id="org1d8b964">WPS</h2>
 <ul>
 <li>WiFi Protected Setup</li>
 <li>Má zjednodušit připojení zařízení</li>
 
 </ul>
 </section>
-<section id="slide-orgeb74d8d">
-<h3 id="orgeb74d8d"></h3>
+<section id="slide-org3d2e570">
+<h3 id="org3d2e570"></h3>
 <ul>
 <li>8 číslic</li>
 <li>Online útok</li>
@@ -186,17 +195,18 @@ PMK explained <a href="https://www.ins1gn1a.com/understanding-wpa-psk-cracking/"
 
 </ul>
 </section>
-<section id="slide-orga6cf5ed">
-<h3 id="orga6cf5ed"></h3>
+<section id="slide-org1f77de1">
+<h3 id="org1f77de1"></h3>
 <ul>
 <li>1 check digit</li>
+<li>7 efektivních číslic</li>
 <li>10 000 000 možností</li>
 <li>Při 10 pokusech za sekundu v průměru 6 dnů</li>
 
 </ul>
 </section>
-<section id="slide-org92fd98d">
-<h3 id="org92fd98d"></h3>
+<section id="slide-org136993e">
+<h3 id="org136993e"></h3>
 <ul>
 <li>Lze hádat první 4 číslice a další 3 zvlášt</li>
 <li>11 000 možností</li>
@@ -204,34 +214,46 @@ PMK explained <a href="https://www.ins1gn1a.com/understanding-wpa-psk-cracking/"
 
 </ul>
 </section>
-<section id="slide-org0b54a90">
-<h3 id="org0b54a90">Pixie Dust</h3>
-</section>
-</section>
-<section>
-<section id="slide-org932cce6">
-<h2 id="org932cce6">KRACK</h2>
+<section id="slide-org313ccce">
+<h3 id="org313ccce">Pixie Dust</h3>
 <ul>
-<li>Možnost vnutit klientovi i vysílači vlastní šifrovací klíč</li>
-<li>Lze odposlouchávat komunikaci, ale ne ji měnit</li>
+<li>Při chybné implementaci lze heslo crackovat offline</li>
+<li>10 sekund</li>
 
 </ul>
 </section>
 </section>
 <section>
-<section id="slide-orgb39bd51">
-<h2 id="orgb39bd51">new hack</h2>
+<section id="slide-org45ad2b6">
+<h2 id="org45ad2b6">KRACK</h2>
+<ul>
+<li>Možnost vnutit klientovi i vysílači vlastní šifrovací klíč</li>
+<li>Lze odposlouchávat komunikaci</li>
+<li>V určitých implementacích lze modifikovat komunikaci</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org99fcf36">
+<h2 id="org99fcf36">Nová zranitelnost</h2>
 <ul>
 <li>Nepotřebuje uživatele</li>
 <li>Zneužívá roaming</li>
+
+</ul>
+<aside class="notes">
+<ul>
 <li><a href="https://hashcat.net/forum/thread-7717.html">https://hashcat.net/forum/thread-7717.html</a></li>
 
 </ul>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-orgfdfd72b">
-<h2 id="orgfdfd72b">WPA 2 Enterprise</h2>
+<section id="slide-org483e4db">
+<h2 id="org483e4db">WPA 2 Enterprise</h2>
 <ul>
 <li>RADIUS server</li>
 <li>Při správné implementaci téměř neprolomitelné</li>
@@ -240,8 +262,8 @@ PMK explained <a href="https://www.ins1gn1a.com/understanding-wpa-psk-cracking/"
 </section>
 </section>
 <section>
-<section id="slide-org14ce2aa">
-<h2 id="org14ce2aa">WPA 2 Enterprise</h2>
+<section id="slide-org82f89be">
+<h2 id="org82f89be">WPA 2 Enterprise</h2>
 <ul>
 <li>Server neprokazuje klíentovi znalost hesla</li>
 <li>Bez důvěryhodných certifikátů lze snadno napadnout MITM</li>
@@ -250,36 +272,46 @@ PMK explained <a href="https://www.ins1gn1a.com/understanding-wpa-psk-cracking/"
 </section>
 </section>
 <section>
-<section id="slide-orgb4e47f6">
-<h2 id="orgb4e47f6">WPA 3</h2>
+<section id="slide-org8422363">
+<h2 id="org8422363">WPA 3</h2>
 <ul>
+<li>2018</li>
 <li>Forward Secrecy</li>
-<li>Password protection on open networks</li>
-<li></li>
+<li>Šifrovaná komunikace i na otevřených sítích</li>
+<li>Protected management frames</li>
 
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org1fb4d8f">
-<h2 id="org1fb4d8f">Privacy</h2>
+<aside class="notes">
 <p>
-<a href="https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython">https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython</a> 
+<a href="https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython">https://andreasgeo.com/wp-content/uploads/2014/06/Privacy-Leaks-from-Wi-Fi-Probing.pdfpython</a>
 </p>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-org54c5380">
-<h2 id="org54c5380">Shrnutí</h2>
+<section id="slide-orgb4c9310">
+<h2 id="orgb4c9310"><img src="./images/encryption-over-time.png" alt="encryption-over-time.png" /></h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc66ca1a">
+<h2 id="orgc66ca1a">Shrnutí</h2>
 <ul>
+<li>Zapnutá WiFi na mobilu umožňuje sledování</li>
+<li>Skrytá síť i filtrování MAC adres moc nepomáhá</li>
 <li>WEP není bezpečný</li>
 <li>WPA 2/AES bez WPS s KRACK patchem a silným heslem je bezpečné</li>
-<li></li>
-
-<li>WPA 2 enterprise</li>
-<li>Skrytá síť i filtrování MAC adres moc nepomáhá</li>
+<li>VPN na veřejné sítě</li>
+<li>WPA 2 enterprise je bezpečný když je správně nakonfigurovaný</li>
 
 </ul>
+</section>
+</section>
+<section>
+<section id="slide-org79533a0">
+<h2 id="org79533a0">Otázky</h2>
 </section>
 </section>
 </div>
