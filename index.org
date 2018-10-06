@@ -5,6 +5,7 @@
 #+OPTIONS: email:true timestamp:nil
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
+#+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/
 
 * Jak funguje Wi-Fi
 - Standard IEEE 802.11
